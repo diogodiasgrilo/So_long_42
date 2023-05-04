@@ -6,13 +6,14 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:12:01 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/04 22:53:46 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:57:40 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
+# include "errors.h"
 # include "so_long.h"
 
 # ifndef ANIMATION_FRAMES
