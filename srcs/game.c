@@ -6,7 +6,7 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:09:21 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/04 22:27:29 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:32:55 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	find_player(t_game *g, char **map)
 	}
 }
 
-void	init_game(char **map, t_lay lay)
+void	start_game(char **map, t_lay lay)
 {
 	t_game	g;
 
@@ -74,7 +74,7 @@ void	init_game(char **map, t_lay lay)
 	printf("%d\n", lay.n_row * SIZE);
 	g.w_id = mlx_new_window(g.id, lay.n_col * SIZE, \
 		lay.n_row * SIZE, "The King's Task");
-	set_background_image(&g, "../sprites/background.xpm");
+	set_background_image(&g, "./sprites/background.xpm");
 	find_player(&g, map);
 	ft_newgame(&g, map, &lay);
 	new_game_image(g, map);

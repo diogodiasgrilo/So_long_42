@@ -6,7 +6,7 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:42:45 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/04 21:53:20 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:33:13 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ t_sprite	ft_initsprites(t_game *g)
 
 	size = SIZE;
 	g->sprites.wall = mlx_xpm_file_to_image(g->id, \
-		"../sprites/wall.xpm", &size, &size);
+		"./sprites/wall.xpm", &size, &size);
 	g->sprites.robin = mlx_xpm_file_to_image(g->id, \
-		"../sprites/robin.xpm", &size, &size);
+		"./sprites/robin.xpm", &size, &size);
 	g->sprites.king = mlx_xpm_file_to_image(g->id, \
-		"../sprites/king_d.xpm", &size, &size);
+		"./sprites/king_d.xpm", &size, &size);
 	g->sprites.treasure = mlx_xpm_file_to_image(g->id, \
-		"../sprites/treasure.xpm", &size, &size);
+		"./sprites/treasure.xpm", &size, &size);
 	g->sprites.grass = mlx_xpm_file_to_image(g->id, \
-		"../sprites/grass.xpm", &size, &size);
+		"./sprites/grass.xpm", &size, &size);
 	g->sprites.fence = mlx_xpm_file_to_image(g->id, \
-		"../sprites/fence.xpm", &size, &size);
+		"./sprites/fence.xpm", &size, &size);
 	g->sprites.small_green = mlx_xpm_file_to_image(g->id, \
-		"../sprites/small_green.xpm", &size, &size);
+		"./sprites/small_green.xpm", &size, &size);
 	return (g->sprites);
 }
 
