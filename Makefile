@@ -1,34 +1,43 @@
 NAME = so_long
 
-LIBFT = libft.a
-
 SRCS =	$(wildcard ./srcs/*.c)
+
 OBJS :=$(SRCS:.c=.o)
-MLX = ./miniLBX/libmlx.a
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+LIBFTA	= ./libft/libft.a
 
-.PHONY: all tester clean fclean re
+MLX	= ./mlx/libmlx.a
+
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+
+MLX_FLAGS	= -lXext -lX11 -lm -lz
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MLX)
-	@make -C ./libft
-	@mv ./libft/libft.a .
-	@cc $(CFLAGS) -I ../miniLBX -L ./miniLBX -lmlx -framework OpenGL -framework AppKit -L /opt/X11/lib -lmlx -lXext -lX11 \
-	-I/usr/local/include -L/usr/local/lib -lpng -L. $(LIBFT) $(SRCS) -o $(NAME)
+$(NAME):  $(MLX) $(LIBFTA) $(OBJS)
+	@cc $(CFLAGS) $(OBJS) $(MLX) $(LIBFTA) $(MLX_FLAGS) -o $(NAME)
+	@echo "$(GREEN)Successfully built --> $(YELLOW)$(NAME)$(DEFAULT)"
 
-tester: $(SRCS)
-	@cc -Wall -Wextra -Werror -I ./miniLBX -L ./miniLBX -lmlx -framework OpenGL -framework AppKit -L /opt/X11/lib -lmlx -lXext -lX11 \
-	-I/usr/local/include -L/usr/local/lib -lpng $(SRCS) -o so_long
-	@./so_long
-	@make fclean
+$(LIBFTA):
+	@make -C libft
+
+$(MLX):
+	@make -C mlx
+
 clean:
-	@make clean -C ./libft
-	@rm -f $(LIBFT)
+	@make fclean -C ./libft
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) libft.a
+	@echo "$(GREEN)Successfully cleaned --> $(YELLOW)$(NAME)$(DEFAULT)"
 
 re: fclean all
+
+.PHONY: all tester clean fclean re
+
+#COLORS
+GREEN = \033[1;32m
+RED = \033[1;31m
+DEFAULT = \033[0m
+YELLOW = \033[1;33m
