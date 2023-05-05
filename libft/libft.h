@@ -6,31 +6,30 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 14:44:30 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/04 22:41:53 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:08:00 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-
 # include <fcntl.h>
-# include <stdio.h>
 # include <limits.h>
-# include <stdlib.h>
 # include <stdarg.h>
+# include <stdio.h>
+# include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 
-int		ft_printf(const char *str, ...);
-void	ft_putnbr(int n, long int *counter);
-void	ft_putstr(char *s, long int *counter);
-void	ft_putchar(char c, long int *counter);
-void	ft_print_unsi_base_ten(unsigned int n, long int *counter);
-void	ft_print_num_hex_upper(unsigned int n, long int *counter);
-void	ft_hex_printer(unsigned int n, int gate, long int *counter);
-void	ft_pointer_printer(unsigned long long int n, int gate, \
-			long int *counter);
+# define HEX_UPPER "0123456789ABCDEF"
+# define HEX_LOWER "0123456789abcdef"
+
+int					ft_printf(const char *str, ...);
+void				ft_putstr(char *s, long int *counter);
+void				ft_putchar(char c, long int *counter);
+void				ft_putnbr(long int n, long int *counter);
+void				ft_hex_printer(unsigned long long int n, int gate,
+						long int *counter, int up_down);
 
 typedef struct s_list
 {
@@ -38,15 +37,15 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-char	*get_next_line(int fd);
-int		ft_tidy(char *buffer);
-int		ft_strlen(const char *str);
-void	ft_fixer_mover(char *buffer, int gate, int i);
+char				*get_next_line(int fd);
+int					ft_tidy(char *buffer);
+int					ft_strlen(const char *str);
+void				ft_fixer_mover(char *buffer, int gate, int i);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10000
 
-#endif
+# endif
 
 char				*ft_itoa(int n);
 int					ft_isprint(int c);
@@ -75,12 +74,12 @@ char				**ft_split(char const *s, char c);
 int					ft_countchar(const char *s, int c);
 void				*ft_memset(void *b, int c, int len);
 char				*ft_strjoin_gnl(char *s1, char *s2);
+char				*ft_strenlarge(char *str1, char *str2);
 void				*ft_memchr(const void *s, int c, int n);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 void				ft_lstadd_front(t_list **lst, t_list *new);
 char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strenlarge(char *str1, const char *str2);
 char				*ft_strtrim(char const *s1, char const *set);
 void				*ft_memcpy(void *dst, const void *src, int n);
 void				ft_lstclear(t_list **lst, void (*del)(void *));

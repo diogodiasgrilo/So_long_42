@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 14:38:05 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/05 15:04:17 by diogpere         ###   ########.fr       */
+/*   Created: 2023/03/05 18:28:33 by diogpere          #+#    #+#             */
+/*   Updated: 2023/05/05 15:03:31 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_putstr(char *s, long int *counter)
 {
-	if (c > 122 || c < 0)
-		return (0);
-	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
-		return (1);
-	return (0);
+	int	i;
+
+	i = -1;
+	if (!s)
+	{
+		ft_putstr("(null)", counter);
+		return ;
+	}
+	while (s[++i])
+		ft_putchar(s[i], counter);
 }

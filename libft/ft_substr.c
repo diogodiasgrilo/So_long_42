@@ -6,13 +6,13 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 14:44:15 by diogpere          #+#    #+#             */
-/*   Updated: 2023/03/05 14:44:17 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/05 20:05:45 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	allocator(char const *s, unsigned int start, unsigned long int len)
+int	m_allocator(char const *s, unsigned int start, unsigned long int len)
 {
 	unsigned long int	i;
 
@@ -45,7 +45,7 @@ char	*ft_substr(char const *s, unsigned int start, int len)
 	l_len = (unsigned long int)len;
 	if (start > (unsigned int)ft_strlen(s))
 		return (error_allocator());
-	allocate = allocator(s, start, l_len);
+	allocate = m_allocator(s, start, l_len);
 	string = (char *)malloc((sizeof(char) * allocate) + 1);
 	if (!string)
 		return (0);

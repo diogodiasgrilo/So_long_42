@@ -1,6 +1,11 @@
 NAME = libft.a
 
-SRCS =	ft_atoi.c \
+SRCS =	ft_printf.c \
+		ft_hex_printer.c \
+		ft_putchar.c \
+		ft_putnbr.c \
+		ft_putstr.c \
+		ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \

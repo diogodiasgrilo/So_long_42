@@ -6,7 +6,7 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 14:38:56 by diogpere          #+#    #+#             */
-/*   Updated: 2023/03/05 14:38:58 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/05 20:07:16 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static int	len(long nb)
 	return (len);
 }
 
-static char	*allocator(int size)
+char	*allocator(int size)
 {
 	char	*str;
 
-	str = (char *)malloc(size + 1);
+	str = (char *)malloc(sizeof(char) * (size + 1));
 	if (!str)
 		return (0);
 	str[size] = '\0';
@@ -64,7 +64,7 @@ char	*ft_itoa(int n)
 		str[0] = '-';
 		ln *= -1;
 	}
-	while (ln > 0 && str[i] != '-')
+	while (str && ln > 0 && str[i] != '-')
 	{
 		str[i--] = (ln % 10) + 48;
 		ln /= 10;
