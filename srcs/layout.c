@@ -6,13 +6,11 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:28:07 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/04 21:55:22 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/05 19:41:49 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	ft_checklayout(char *line, t_err *map_err, t_lay *lay, int is_last);
 
 t_lay	ft_newlayout(void)
 {
@@ -24,6 +22,20 @@ t_lay	ft_newlayout(void)
 	lay.n_pl = 0;
 	lay.n_collect = 0;
 	return (lay);
+}
+
+void	invalid_char(t_err *map_err, char **map_str, char *orig_line)
+{
+	free(*map_str);
+	map_err->inv_char = 1;
+	ft_print_map_error(map_err, &orig_line);
+}
+
+void	empty_map(char *line)
+{
+	if (line)
+		free(line);
+	error_msg_params("Map is empty!", NULL);
 }
 
 void	ft_readlayout(int fd, t_err *map_err, t_lay *lay, char **map_str)
@@ -39,21 +51,23 @@ void	ft_readlayout(int fd, t_err *map_err, t_lay *lay, char **map_str)
 		if (!line)
 		{
 			if (!lay->n_col)
-				error_msg_params("Map is empty!", NULL);
+				empty_map(line);
 			else
 				ft_checklayout(last_line, map_err, lay, 1);
 			free(last_line);
 			break ;
 		}
 		free(last_line);
-		ft_checklayout(line, map_err, lay, !lay->n_row);
+		if (ft_checklayout(line, map_err, lay, !lay->n_row))
+			invalid_char(map_err, map_str, line);
 		last_line = ft_substr(line, 0, ft_strlen(line));
 		*map_str = ft_strenlarge(*map_str, line);
 		lay->n_row++;
+		free(line);
 	}
 }
 
-void	ft_checklayout(char *line, t_err *map_err, t_lay *lay, int is_last)
+int	ft_checklayout(char *line, t_err *map_err, t_lay *lay, int is_last)
 {
 	if (!lay->n_col)
 		lay->n_col = ft_strlen(line) - 1;
@@ -72,9 +86,7 @@ void	ft_checklayout(char *line, t_err *map_err, t_lay *lay, int is_last)
 	map_err->inv_n_players = (lay->n_pl < 1 || lay->n_pl > 1);
 	map_err->inv_n_collect = lay->n_collect < 1;
 	while (line && *line)
-	{
-		if (!ft_strchr("01CEPG\n", *line))
-			map_err->inv_char = 1;
-		line++;
-	}
+		if (!ft_strchr("01CEPG\n", *(line++)))
+			return (1);
+	return (0);
 }
