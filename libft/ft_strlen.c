@@ -6,7 +6,7 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 14:43:47 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/04 09:19:50 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/07 10:50:44 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
-	while (s && s[i])
+	while (s[i])
+	{
 		i++;
+	}
 	return (i);
 }

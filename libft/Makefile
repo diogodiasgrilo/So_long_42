@@ -57,7 +57,7 @@ BONUS_SRC = ft_lstadd_back.c \
 OBJS :=$(SRCS:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 .PHONY: all bonus clean fclean re
 
