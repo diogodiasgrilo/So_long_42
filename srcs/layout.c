@@ -6,7 +6,7 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:28:07 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/05 19:41:49 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/07 10:16:50 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@ void	invalid_char(t_err *map_err, char **map_str, char *orig_line)
 	ft_print_map_error(map_err, &orig_line);
 }
 
-void	empty_map(char *line)
+void	empty_map(char *line, char *last_line, char **map_str)
 {
 	if (line)
 		free(line);
+	if (last_line)
+		free(last_line);
+	if (*map_str)
+		free(*map_str);
 	error_msg_params("Map is empty!", NULL);
 }
 
@@ -51,7 +55,7 @@ void	ft_readlayout(int fd, t_err *map_err, t_lay *lay, char **map_str)
 		if (!line)
 		{
 			if (!lay->n_col)
-				empty_map(line);
+				empty_map(line, last_line, map_str);
 			else
 				ft_checklayout(last_line, map_err, lay, 1);
 			free(last_line);

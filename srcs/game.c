@@ -6,7 +6,7 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:09:21 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/05 20:08:07 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/07 11:04:59 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@
 
 void	print_moves(t_game g)
 {
-	char	*string;
 	char	*num;
 	char	*together;
 
-	string = (char *)malloc(sizeof(char) * 1000 + 1);
 	num = ft_itoa(g.n_moves);
 	together = ft_strjoin("Current moves: ", num);
 	mlx_string_put(g.id, g.w_id, 1 * SIZE / 2, 1 * SIZE / 2, \
 		16777215, together);
 	free(num);
-	free(string);
 	free(together);
 }
 
