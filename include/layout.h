@@ -6,7 +6,7 @@
 /*   By: diogpere <diogpere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:12:01 by diogpere          #+#    #+#             */
-/*   Updated: 2023/05/05 19:17:48 by diogpere         ###   ########.fr       */
+/*   Updated: 2023/05/07 10:17:52 by diogpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_lay
 t_lay			ft_newlayout(void);
 void			ft_readlayout(int fd, t_err *map_err, t_lay *lay,
 					char **map_str);
-int			ft_checklayout(char *line, t_err *map_err, t_lay *lay, \
+int				ft_checklayout(char *line, t_err *map_err, t_lay *lay, \
 				int is_last);
 
 #endif
