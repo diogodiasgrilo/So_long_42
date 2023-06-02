@@ -6,7 +6,7 @@ OBJS :=$(SRCS:.c=.o)
 
 LIBFTA	= ./libft/libft.a
 
-MLX	= ./mlx/libmlx.a
+MLX	= ./miniLBX/libmlx.a
 
 CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
